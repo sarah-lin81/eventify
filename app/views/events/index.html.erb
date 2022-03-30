@@ -4,7 +4,9 @@
   <div class="row">
     <% @events.each do |event| %>
       <div class="col-md-4 mb-2">
-        <img src="https://picsum.photos/id/684/250/250" alt="">
+        <% if event.img.attached? %>
+          <%= image_tag event.img.url, size: "250x250" %>
+        <% end %>
       </div>
       <div class="col-md-8 mb-2">
         <div class="card-body">
