@@ -12,3 +12,14 @@
   </div>
 </div>
 
+<% if user_signed_in?  %>
+  <% if @event.user_id == current_user.id %> 
+    <div class="buttons">
+      <%= link_to "Edit", edit_event_path(@event), class: "btn btn-primary" %>
+      <%= link_to "Delete", event_path(@event), method: "delete", 
+                                                data: { confirm: "Are you sure?" }, 
+                                                class: "btn btn-danger" %>  
+    </div>
+  <% end %> 
+<% end %> 
+
