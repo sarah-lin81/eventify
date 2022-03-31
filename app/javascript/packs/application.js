@@ -14,6 +14,7 @@ ActiveStorage.start()
 
 import "jquery"
 import "bootstrap"
-import "../stylesheets/application" 
+import "../stylesheets/application"
+import "@fortawesome/fontawesome-free/css/all"
 
 import "controllers"
