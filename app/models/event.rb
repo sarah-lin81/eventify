@@ -3,5 +3,6 @@ class Event < ApplicationRecord
 
   validates :title, :description, :location, :start_date, :end_date, presence: true
 
-  has_one_attached :img
+  has_one_attached :img, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

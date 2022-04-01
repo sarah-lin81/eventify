@@ -31,3 +31,22 @@
     <p><i class="fas fa-map-marker-alt"></i> Location: <%= @event.location %></p>
   </div>
 </div>
+
+<div class="form">
+  <%= form_with(model: @comment, url: event_comments_path(@event)) do |f| %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+<div class="comments-list">
+  <% @comments.each do |comment| %>
+    <div class="card">
+      <p><%= comment.user.email %></p>
+      <p><%= comment.content %></p> 
+        <%= link_to comment_path(comment), method: "delete", data: {confirm: "Are you sure?"}, class:"btn btn-danger" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+    </div> 
+  <% end %>  
+</div>
