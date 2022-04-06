@@ -5,4 +5,5 @@ class Event < ApplicationRecord
 
   has_one_attached :img, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :registrations, dependent: :destroy
 end

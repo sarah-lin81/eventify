@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root "events#index"
   resources :events do
     resources :comments, shallow: true, only: [:create, :destroy]
+    resources :registrations, only: [:new, :create]
   end
 end
