@@ -1,0 +1,9 @@
+<h1>Your registrations</h1>
+
+<ul>
+  <% current_user.registrations.each do |reg| %> 
+    <li>
+      <%= link_to reg.event.title, event_path(reg.event.id), class: "mr-2 text-decoration-none text-dark" %>
+    </li>
+  <% end %> 
+</ul>
