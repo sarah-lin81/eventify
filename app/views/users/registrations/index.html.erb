@@ -4,6 +4,8 @@
   <% current_user.registrations.each do |reg| %> 
     <li>
       <%= link_to reg.event.title, event_path(reg.event.id), class: "mr-2 text-decoration-none text-dark" %>
+      <%= link_to "Cancel registration", registration_path(reg), method: "delete", data: { confirm: "Are you sure to cancel this registration?" },
+                                                                 class: "btn btn-outline-secondary" %> 
     </li>
   <% end %> 
 </ul>

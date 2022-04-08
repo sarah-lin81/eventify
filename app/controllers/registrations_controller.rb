@@ -1,5 +1,7 @@
 class RegistrationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_event, only: [:new, :create]
+  before_action :find_registration, only: [:destroy]
 
   def new
     @registration = @event.registrations.new
@@ -14,6 +16,11 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def destroy
+    @registration.destroy
+    redirect_to users_registrations_path
+  end
+
   private
   def registration_params
     params.require(:registration).permit(:name, :email, :mobile).merge(user_id: current_user.id)
@@ -21,5 +28,9 @@ class RegistrationsController < ApplicationController
 
   def find_event
     @event = Event.find(params[:event_id])
+  end
+
+  def find_registration
+    @registration = Registration.find(params[:id])
   end
 end
