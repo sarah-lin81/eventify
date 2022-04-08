@@ -1,11 +1,11 @@
-<h1>Your registrations</h1>
+<h1 class="mt-4 mb-4">Your registrations</h1>
 
-<ul>
-  <% current_user.registrations.each do |reg| %> 
-    <li>
-      <%= link_to reg.event.title, event_path(reg.event.id), class: "mr-2 text-decoration-none text-dark" %>
+<ul class="list-group">
+  <% current_user.registrations.each do |reg| %>
+    <li class="list-group-item">
+      <%= link_to reg.event.title, event_path(reg.event.id), class: "mr-2 text-decoration-none text-primary font-weight-bold" %>
       <%= link_to "Cancel registration", registration_path(reg), method: "delete", data: { confirm: "Are you sure to cancel this registration?" },
-                                                                 class: "btn btn-outline-secondary" %> 
+                                                                 class: "btn btn-outline-secondary" %>
     </li>
-  <% end %> 
+  <% end %>
 </ul>
