@@ -40,10 +40,7 @@
 
 <h2>Leave a comment</h2>
 <div class="form mb-3">
-  <%= form_with(model: @comment, url: event_comments_path(@event)) do |f| %>
-    <%= f.text_area :content, class: "form-control mb-2", placeholder: "Leave a comment..." %>
-    <%= f.submit class: "btn btn-primary" %>
-  <% end %>
+  <%= render "comments/form" %>
 </div>
 
 <h2>Comments</h2>
