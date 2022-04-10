@@ -1,0 +1,25 @@
+<div class="card mb-1">
+  <div class="card-header d-flex">
+    <div class="d-flex">
+      <div class="mr-2">             
+        <%= image_tag comment.user.avatar.url, size: "20x20", class: "rounded-circle" %>
+      </div>
+      <div class="mr-3"><strong><%= comment.user.email %></strong></div>
+    </div>          
+    <div class="text-muted">
+      <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+    </div>
+  </div>
+  <div class="card-body"><%= comment.content %>
+    <% if user_signed_in? %>
+      <% if @event.user_id == current_user.id %> 
+      <div class="text-right">
+        <%= link_to comment_path(comment), method: "delete", data: { confirm: "Are you sure?" },
+                                           class: "btn btn-danger btn-sm" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %> 
+  </div>
+</div>
