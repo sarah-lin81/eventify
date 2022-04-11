@@ -1,6 +1,6 @@
-<h1 class="mt-3 mb-3">Register for <%= @event.title %></h1>
+<h1 class="mt-3 mb-3">Enroll for <%= @event.title %></h1>
 
-<%= form_with(model: @registration, url: event_registrations_path) do |f| %>
+<%= form_with(model: @enrollment, url: event_enrollments_path) do |f| %>
   <div class="mb-2">
     <%= f.label :name %>
     <% if user_signed_in? %> 

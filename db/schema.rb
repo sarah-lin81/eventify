@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_11_093643) do
+ActiveRecord::Schema.define(version: 2022_04_11_111742) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 2022_04_11_093643) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_enrollments_on_event_id"
+    t.index ["user_id"], name: "index_enrollments_on_user_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -60,17 +71,6 @@ ActiveRecord::Schema.define(version: 2022_04_11_093643) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
-  create_table "registrations", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.integer "user_id", null: false
-    t.integer "event_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_registrations_on_event_id"
-    t.index ["user_id"], name: "index_registrations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2022_04_11_093643) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
+  add_foreign_key "enrollments", "events"
+  add_foreign_key "enrollments", "users"
   add_foreign_key "events", "users"
-  add_foreign_key "registrations", "events"
-  add_foreign_key "registrations", "users"
 end

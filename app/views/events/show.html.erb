@@ -25,7 +25,7 @@
   </div>
   
   <div class="col-4">
-    <%= link_to "Register", new_event_registration_path(@event), class: "btn btn-success btn-lg w-100 mb-3" %>
+    <%= link_to "Enroll", new_event_enrollment_path(@event), class: "btn btn-success btn-lg w-100 mb-3" %>
     <div class="shadow p-3">
       <p><h3>Date and time</h3>
         <p>Event starts: <%= @event.start_date.strftime("%Y-%m-%d %H:%M:%S") %><br>
@@ -41,12 +41,10 @@
 <h2 class="mb-4">Comments</h2>
 <div class="d-flex">
   <span class="mr-2">
-    <% if user_signed_in? %>
-      <% if current_user.avatar.attached? %>
-        <%= image_tag current_user.avatar.url, size: "20x20", class: "rounded-circle" %>
-      <% else %> 
-        <%= image_tag("default", :size => "20x20") %>
-      <% end %> 
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar.url, size: "20x20", class: "rounded-circle" %>
+    <% else %> 
+      <%= image_tag("default", :size => "20x20") %>
     <% end %>
   </span>
   <div class="mb-4 w-100"><%= render "comments/form" %></div>

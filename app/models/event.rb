@@ -5,7 +5,7 @@ class Event < ApplicationRecord
 
   has_one_attached :img, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :registrations, dependent: :destroy
+  has_many :enrollments, dependent: :destroy
 
   def self.search(search)
     if search
