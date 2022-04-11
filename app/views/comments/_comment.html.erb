@@ -1,4 +1,4 @@
-<div class="card mb-1">
+<div id="comment-<%= comment.id %>" class="card mb-1">
   <div class="card-header d-flex">
     <div class="d-flex">
       <div class="mr-2">             
@@ -15,7 +15,7 @@
       <% if @event.user_id == current_user.id %> 
       <div class="text-right">
         <%= link_to comment_path(comment), method: "delete", data: { confirm: "Are you sure?" },
-                                           class: "btn btn-danger btn-sm" do %>
+                                           class: "btn btn-danger btn-sm", remote: true do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>

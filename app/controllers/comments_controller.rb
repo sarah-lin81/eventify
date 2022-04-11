@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
     @comment = @event.comments.new(comment_params)
     if @comment.save
       @content = comment_params[:content]
-      redirect_to @event
     else
       redirect_to "/"
     end
