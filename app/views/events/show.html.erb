@@ -38,12 +38,20 @@
   </div>
 </div>
 
-<h2>Leave a comment</h2>
-<div class="form mb-3">
-  <%= render "comments/form" %>
+<h2 class="mb-4">Comments</h2>
+<div class="d-flex">
+  <span class="mr-2">
+    <% if user_signed_in? %>
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar.url, size: "20x20", class: "rounded-circle" %>
+      <% else %> 
+        <%= image_tag("default", :size => "20x20") %>
+      <% end %> 
+    <% end %>
+  </span>
+  <div class="mb-4 w-100"><%= render "comments/form" %></div>
 </div>
 
-<h2>Comments</h2>
 <div class="comments-list mb-3">
   <%= render @comments %> 
 </div>
