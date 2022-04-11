@@ -1,4 +1,5 @@
 <%= form_with(model: @comment, url: event_comments_path(@event), local: false) do |f| %>
-    <%= f.text_area :content, class: "form-control mb-2 p-2", placeholder: "Leave a comment..." %>
-    <%= f.submit class: "btn btn-primary" %>
+  <%= f.text_area :content, id: "comment-content", class: "form-control mb-2 p-2", 
+                            placeholder: "Leave a comment...", required: true %>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>

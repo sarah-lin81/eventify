@@ -22,7 +22,7 @@
               <% if current_user.avatar.attached? %>
                 <%= image_tag current_user.avatar.url, size: "20x20", class: "rounded-circle" %>
               <% else %> 
-                <%= image_tag("default", :size => "20x20") %>
+                <%= image_tag "default", size: "20x20" %>
               <% end %>
             </div>
             <div class="dropdown">
