@@ -1,10 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to "Events", root_path, class: "navbar-brand ml-5" %>
+  <%= link_to "Events", root_path, class: "navbar-brand mb-0 h1 ml-3" %>
+  <%= form_tag events_path, method: :get, class: "form-inline my-2 my-lg-0" do %>
+    <%= text_field_tag :search, nil, placeholder: "Search", class: "form-control mr-sm-2" %>
+    <%= submit_tag "Search", :event_name => nil, class: "btn btn-outline-success my-2 my-sm-0" %> 
+  <% end %>  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse justify-content-end mr-5" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse justify-content-end mr-3" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <% if user_signed_in? %>  
         <li class="nav-item mr-3">
