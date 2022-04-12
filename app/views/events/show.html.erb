@@ -21,7 +21,7 @@
 <div class="d-flex justify-content-between row mb-4">
   <div class="col-8">   
     <p><i class="fas fa-user-circle"></i> Created by <%= @event.user.email %></p>
-    <p><h3>About this event</h3><%= simple_format(@event.description) %></p> 
+    <p><h3>About this event</h3><%= @event.description %></p> 
   </div>
   
   <div class="col-4">

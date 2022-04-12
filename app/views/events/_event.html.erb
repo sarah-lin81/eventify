@@ -7,6 +7,6 @@
   <div class="card-body">
     <h2><%= link_to event.title, event_path(event), class: "text-decoration-none" %></h2>
     <p><%= event.start_date.strftime("%Y-%m-%d %H:%M:%S") %></p>
-    <p><%= simple_format(event.description) %></p>
+    <p><%= event.description %></p>
   </div>
 </div>

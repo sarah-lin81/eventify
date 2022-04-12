@@ -3,6 +3,9 @@ class Event < ApplicationRecord
 
   validates :title, :description, :location, :start_date, :end_date, presence: true
 
+  # trix
+  has_rich_text :description
+
   has_one_attached :img, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :enrollments, dependent: :destroy

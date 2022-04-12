@@ -16,7 +16,7 @@
 
   <div class="form-group row mb-3">
     <%= f.label :description, class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-7"><%= f.text_area :description, data: { controller: "editor" } %></div>
+    <div class="col-sm-7"><%= f.rich_text_area :description %></div>
   </div>
 
   <div class="form-group row mb-3">

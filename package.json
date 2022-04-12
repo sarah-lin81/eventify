@@ -11,7 +11,6 @@
     "@rails/webpacker": "5.4.3",
     "bootstrap": "^4.6.1",
     "flatpickr": "^4.6.11",
-    "froala-editor": "^4.0.10",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "stimulus": "^3.0.1",
