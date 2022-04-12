@@ -1,57 +1,59 @@
-<div class="d-flex mt-3 mb-3">
-  <h1 class="mr-3"><%= @event.title %></h1>  
-    <div class="buttons p-2">
-      <%= link_to events_path, class: "btn btn-secondary" do %>
-        <i class="fas fa-arrow-alt-circle-left"> Back</i>
-      <% end %> 
-        <% if user_signed_in?  %>
-          <% if @event.user_id == current_user.id %>
-            <%= link_to edit_event_path(@event), class: "btn btn-primary" do %>
-              <i class="fas fa-pencil-alt"></i>
-            <% end %> 
-            <%= link_to event_path(@event), method: "delete", data: { confirm: "Are you sure?" },
-                                            class: "btn btn-danger" do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %> 
+<div class="container">
+  <div class="d-flex mt-3 mb-3">
+    <h1 class="mr-3"><%= @event.title %></h1>
+      <div class="buttons p-2">
+        <%= link_to events_path, class: "btn btn-secondary" do %>
+          <i class="fas fa-arrow-alt-circle-left"> Back</i>
+        <% end %>
+          <% if user_signed_in?  %>
+            <% if @event.user_id == current_user.id %>
+              <%= link_to edit_event_path(@event), class: "btn btn-primary" do %>
+                <i class="fas fa-pencil-alt"></i>
+              <% end %>
+              <%= link_to event_path(@event), method: "delete", data: { confirm: "Are you sure?" },
+                                              class: "btn btn-danger" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            <% end %>
           <% end %>
-        <% end %>  
-    </div>
-</div>
-
-<div class="d-flex justify-content-between row mb-4">
-  <div class="col-8">   
-    <p><i class="fas fa-user-circle"></i> Created by <%= @event.user.email %></p>
-    <p><h3>About this event</h3><%= @event.description %></p> 
+      </div>
   </div>
   
-  <div class="col-4">
-    <%= link_to "Enroll", new_event_enrollment_path(@event), class: "btn btn-success btn-lg w-100 mb-3" %>
-    <div class="shadow p-3">
-      <p><h3>Date and time</h3>
-        <p>Event starts: <%= @event.start_date.strftime("%Y-%m-%d %H:%M:%S") %><br>
-           Event ends: <%= @event.end_date.strftime("%Y-%m-%d %H:%M:%S") %></p>
-      </p>
-      <p><h3>Location</h3>
-        <%= @event.location %>
-      </p>
+  <div class="d-flex justify-content-between row mb-4">
+    <div class="col-8">
+      <p><i class="fas fa-user-circle"></i> Created by <%= @event.user.email %></p>
+      <p><h3>About this event</h3><%= @event.description %></p>
+    </div>
+  
+    <div class="col-4">
+      <%= link_to "Enroll", new_event_enrollment_path(@event), class: "btn btn-success btn-lg w-100 mb-3" %>
+      <div class="shadow p-3">
+        <p><h3>Date and time</h3>
+          <p>Event starts: <%= @event.start_date.strftime("%Y-%m-%d %H:%M:%S") %><br>
+             Event ends: <%= @event.end_date.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        </p>
+        <p><h3>Location</h3>
+          <%= @event.location %>
+        </p>
+      </div>
     </div>
   </div>
-</div>
-
-<h2 class="mb-4">Comments</h2>
-<div class="d-flex">
-  <span class="mr-2">
-    <% if user_signed_in? %>
-      <% if current_user.avatar.attached? %>
-        <%= image_tag current_user.avatar.url, size: "20x20", class: "rounded-circle" %>
-      <% else %> 
-        <%= image_tag "default.jpg", size: "20x20" %>
-      <% end %> 
-    <% end %>
-  </span>
-  <div class="mb-4 w-100"><%= render "comments/form" %></div>
-</div>
-
-<div class="comments-list mb-3">
-  <%= render @comments %> 
+  
+  <h2 class="mb-4">Comments</h2>
+  <div class="d-flex">
+    <span class="mr-2">
+      <% if user_signed_in? %>
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar.url, size: "20x20", class: "rounded-circle" %>
+        <% else %>
+          <%= image_tag "default.jpg", size: "20x20" %>
+        <% end %>
+      <% end %>
+    </span>
+    <div class="mb-4 w-100"><%= render "comments/form" %></div>
+  </div>
+  
+  <div class="comments-list mb-3">
+    <%= render @comments %>
+  </div>
 </div>

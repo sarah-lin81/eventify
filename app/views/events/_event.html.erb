@@ -1,12 +1,14 @@
-<div class="col-md-3 mb-2">
-  <% if event.img.attached? %>
-    <%= image_tag event.img.url, size: "250x200" %>
-  <% end %>
-</div>
-<div class="col-md-9 mb-2">
-  <div class="card-body">
-    <h2><%= link_to event.title, event_path(event), class: "text-decoration-none" %></h2>
-    <p><%= event.start_date.strftime("%Y-%m-%d %H:%M:%S") %></p>
-    <p><%= event.description %></p>
+<div class="col mb-4">
+  <div class="card h-100">
+    <% if event.img.attached? %>
+      <%= link_to event_path(event) do %>
+        <%= image_tag event.img.url, size: "150x200", class: "card-img-top" %>
+      <% end %> 
+    <% end %>
+    <div class="card-body">
+      <h2 class="card-title"><%= link_to event.title, event_path(event), class: "text-decoration-none text-dark" %></h2>
+      <p class="card-text event-date"><%= event.start_date.strftime("%a, %b %d, %I:%M %p") %></p>
+      <p class="text-muted"><%= event.location %></p>
+    </div>
   </div>
 </div>
