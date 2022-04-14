@@ -6,7 +6,9 @@ class Event < ApplicationRecord
   # trix
   has_rich_text :description
 
-  has_one_attached :img, dependent: :destroy
+  has_one_attached :photo, dependent: :destroy
+  validates :photo, content_type: [:png, :jpg, :jpeg], size: { less_than: 1.megabytes, message: 'is too large' }
+
   has_many :comments, dependent: :destroy
   has_many :enrollments, dependent: :destroy
 

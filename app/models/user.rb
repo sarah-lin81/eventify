@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_one_attached :avatar, dependent: :destroy
+  validates :avatar, content_type: [:png, :jpg, :jpeg], size: { less_than: 1.megabytes, message: 'is too large' }
 
   has_many :events, dependent: :destroy
   has_many :comments, dependent: :destroy

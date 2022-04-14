@@ -1,8 +1,8 @@
 <div class="col mb-4">
   <div class="card h-100">
-    <% if event.img.attached? %>
+    <% if event.photo.attached? %>
       <%= link_to event_path(event) do %>
-        <%= image_tag event.img.url, size: "150x200", class: "card-img-top" %>
+        <%= image_tag event.photo.url, size: "150x200", class: "card-img-top" %>
       <% end %> 
     <% end %>
     <div class="card-body">
