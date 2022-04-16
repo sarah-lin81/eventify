@@ -7,7 +7,7 @@
       <div class="mr-3"><strong><%= comment.user.email %></strong></div>
     </div>          
     <div class="text-muted">
-      <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+      <%= comment.created_at.strftime("%a, %b %d, %I:%M %p") %>
     </div>
   </div>
   <div class="card-body"><%= comment.content %>
