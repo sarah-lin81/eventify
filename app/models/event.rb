@@ -11,6 +11,8 @@ class Event < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :enrollments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
 
   def self.search(search)
     if search

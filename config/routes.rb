@@ -6,4 +6,14 @@ Rails.application.routes.draw do
     resources :comments, shallow: true, only: [:create, :destroy]
     resources :enrollments, shallow: true, only: [:new, :create, :destroy]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :events, only: [] do
+        member do
+          post :favorite
+        end
+      end
+    end
+  end
 end

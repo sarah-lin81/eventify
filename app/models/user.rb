@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :enrollments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :favorite_events, through: :likes, source: :events, dependent: :destroy
 
   def name
     email.split("@")[0]
