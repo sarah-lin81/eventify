@@ -29,9 +29,22 @@
     </div>
   </div>
   <div class="panel py-3 d-flex justify-content-between row border-top border-bottom">
-    <div class="buttons col-8">
-      <a href="#" class="p-2"><i class="fas fa-share-square"></i></a>
-      <a href="#" class="p-2"><i class="far fa-heart"></i></a>
+    <div class="buttons col-8 d-flex">
+      <div class=""><a href="#" class="p-2"><i class="fas fa-share-square"></i></a></div>
+      <div data-controller="favorite"
+           data-favorite-id-value="<%= @event.id %>">
+        <a href="#" class="p-2" data-action="favorite#toggleFavorite">
+          <% if user_signed_in? %>
+            <% if current_user.favorite_events.exists?(@event.id) %>
+              <i class="fas fa-heart" data-favorite-target="icon"></i>
+            <% else %> 
+              <i class="far fa-heart" data-favorite-target="icon"></i>
+            <% end %>
+          <% else %>
+            <i class="far fa-heart" data-favorite-target="icon"></i>  
+          <% end %>  
+        </a>
+      </div>
     </div>
     <div class="col-4">
       <%= link_to "Enroll", new_event_enrollment_path(@event), class: "btn btn-success btn-lg w-100 px-4" %>
