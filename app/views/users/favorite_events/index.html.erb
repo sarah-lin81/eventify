@@ -1,0 +1,40 @@
+<div class="container">
+  <h1 class="pt-5 pb-3">Likes</h1>
+  
+<% @favorite_events.each do |event| %>
+  <div class="card mb-2 border-0">
+    <div class="row p-3">
+      <div class="col-md-8 p-2">
+        <div class="card-body p-2">
+            <h2 class="card-title"><%= link_to event.title, event_path(event) , class: "text-decoration-none text-dark" %></h2>
+            <p class="card-text event-date"><%= event.start_date.strftime("%a, %b %d, %I:%M %p") %></p>
+            <p class="card-text text-muted"><%= event.location %></p>
+        </div>
+      </div>
+      <div class="col-md-4 p-2">
+        <div class="img">
+          <% if event.photo.attached? %>
+            <%= image_tag event.photo.url, size: "200x200", class: "card-img" %>
+          <% end %>
+        </div>
+        <div class="buttons d-flex justify-content-end pt-2">
+          <div class=""><a href="#" class="p-2 text-dark"><i class="fas fa-share-square"></i></a></div>
+          <div data-controller="favorite"
+               data-favorite-id-value="<%= event.id %>">
+            <a href="#" class="p-2 text-dark" data-action="favorite#toggleFavorite">
+              <% if user_signed_in? %>
+                <% if current_user.favorite_events.exists?(event.id) %>
+                  <i class="fas fa-heart text-danger" data-favorite-target="icon"></i>
+                <% else %> 
+                  <i class="far fa-heart" data-favorite-target="icon"></i>
+                <% end %>
+              <% else %>
+                <i class="far fa-heart" data-favorite-target="icon"></i>  
+              <% end %>  
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %> 
