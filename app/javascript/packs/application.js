@@ -22,3 +22,21 @@ import "controllers"
 require("trix")
 require("@rails/actiontext")
 import "../trix-editor-overrides"
+
+document.addEventListener("turbolinks:load", () => {
+  const twitter = document.querySelector(".twitter")
+  const facebook = document.querySelector(".facebook")
+  if (twitter) {
+    twitter.addEventListener("click", () => {
+      let url = encodeURI(document.location.href)
+      let title = "Hello, check this: "
+      twitter.setAttribute("href", `https://twitter.com/share?url=${url}&text=${title}&via=[via]&hashtags=[hashtags]`)
+    })
+  }
+  if (facebook) {
+    facebook.addEventListener("click", () => {
+      let url = encodeURI(document.location.href)
+      facebook.setAttribute("href", `https://www.facebook.com/sharer.php?u=${url}`)
+    })
+  }
+})

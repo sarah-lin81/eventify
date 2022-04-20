@@ -16,7 +16,7 @@ export default class extends Controller {
            const icon = this.iconTarget
            if (res.data.status === "added") {
              icon.classList.remove("far")
-             icon.classList.add("fas")
+             icon.classList.add("fas", "text-danger")
            } else {
              icon.classList.remove("fas")
              icon.classList.add("far")
