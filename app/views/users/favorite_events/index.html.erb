@@ -18,7 +18,10 @@
           <% end %>
         </div>
         <div class="buttons d-flex justify-content-end pt-2">
-          <div class=""><a href="#" class="p-2 text-dark"><i class="fas fa-share-square"></i></a></div>
+          <div class="share">
+            <a href="#" class="twitter text-secondary p-2" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="facebook text-secondary p-2" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          </div>
           <div data-controller="favorite"
                data-favorite-id-value="<%= event.id %>">
             <a href="#" class="p-2 text-dark" data-action="favorite#toggleFavorite">

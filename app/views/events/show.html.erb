@@ -22,8 +22,8 @@
       <% end %> 
     </div>
     <div class="col-md-4 bg-light text-dark px-4 pt-4 pb-3">
-      <div class=""><%= @event.start_date.strftime("%^b") %></div>
-      <div class="pl-1"><%= @event.start_date.strftime("%e") %></div>
+      <div><%= @event.start_date.strftime("%^b") %></div>
+      <div><%= @event.start_date.strftime("%e") %></div>
       <h3 class="my-3"><%= @event.title %></h3>
       <div class=""><i class="fas fa-user-circle"></i> Created by <%= @event.user.email %></div>
     </div>
@@ -39,7 +39,7 @@
         <a href="#" class="p-2 text-secondary" data-action="favorite#toggleFavorite">
           <% if user_signed_in? %>
             <% if current_user.favorite_events.exists?(@event.id) %>
-              <i class="fas fa-heart" data-favorite-target="icon"></i>
+              <i class="fas fa-heart text-danger" data-favorite-target="icon"></i>
             <% else %> 
               <i class="far fa-heart" data-favorite-target="icon"></i>
             <% end %>

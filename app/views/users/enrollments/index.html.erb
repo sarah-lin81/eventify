@@ -1,10 +1,10 @@
 <div class="container">
-  <h1 class="my-3 text-center">Your enrollments</h1>
+  <h1 class="pt-5 pb-3">Enrollments</h1>
   
   <ul class="list-group">
-    <% current_user.enrollments.each do |enrollment| %>
+    <% @enrollments.each do |enrollment| %>
       <li class="list-group-item">
-        <%= link_to enrollment.event.title, event_path(enrollment.event.id), class: "mr-2 text-decoration-none text-primary font-weight-bold" %>
+        <%= link_to enrollment.event.title, event_path(enrollment.event.id), class: "mr-2 h3 text-decoration-none text-primary" %>
         <%= link_to "Cancel enrollment", enrollment_path(enrollment), method: "delete", data: { confirm: "Are you sure to cancel this enrollment?" },
                                                                       class: "btn btn-outline-secondary" %>
       </li>
