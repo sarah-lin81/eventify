@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :find_event, except: [:index, :new, :create]
 
   def index
-    @events = Event.order(created_at: :desc).search(params[:search])
+    @events = Event.order(start_date: params[:desc] || :desc).search(params[:search])
   end
 
   def new
